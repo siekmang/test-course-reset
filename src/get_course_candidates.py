@@ -1,7 +1,6 @@
 import requests
 
 def get_course_candidates_by_name(course_name, subdomain, api_key):
-    """Port of the JS getCourseCandidatesByName function"""
     base_url = f"https://{subdomain}.instructure.com/api/v1"
     headers = {"Authorization": f"Bearer {api_key}"}
 
