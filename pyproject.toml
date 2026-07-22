@@ -1,7 +1,7 @@
 [project]
 name = "test-course-reset"
 version = "0.1.0"
-description = "Add your description here"
+description = "Reset your Canvas test courses"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
