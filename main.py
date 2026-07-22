@@ -23,6 +23,7 @@ if not env_path.exists():
 load_dotenv(dotenv_path=env_path)
 
 class MainApp(App):
+    TITLE = "Test Course Reset Utility"
     BINDINGS = [
             Binding("up", "focus_previous", "Previous", show=False, priority=True),
             Binding("down", "focus_next", "Next", show=False, priority=True),
@@ -37,7 +38,7 @@ class MainApp(App):
 
     def compose(self) -> Iterable[Widget]:
         yield Header()
-        yield Label("Test Course Utility App")
+        yield Label("Test Course Reset Utility")
         yield Button("Configuration", id="config")
         yield Button("Default Course Reset", id="reset_default")
         yield Button("Custom Course Reset", id="reset_other")
