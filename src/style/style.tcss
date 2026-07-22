@@ -179,3 +179,47 @@ ModalScreen Button:focus {
 .hidden-select {
     display: none;
 }
+
+ConfirmModal {
+    align: center middle;
+}
+
+#confirm_dialog {
+    width: 60;
+    max-width: 90%;
+    height: auto;
+    padding: 2 4;
+    background: #21252b;
+    border: thick #61afef;
+}
+
+#confirm_dialog Label {
+    width: 100%;
+    content-align: center middle;
+    padding-bottom: 1;
+}
+
+#confirm_dialog Horizontal {
+    width: 100%;
+    align: center middle;
+    height: auto;
+}
+
+#confirm_dialog Button {
+    margin: 0 1;
+    min-width: 12;
+}
+
+#token_row {
+    height: auto;
+    margin: 0 1 1 1;
+}
+#token_row Input {
+    margin: 0;
+    width: 1fr;
+}
+#token_row Button {
+    margin: 0 0 0 0;
+    width: 6;
+    min-width: 6;
+}

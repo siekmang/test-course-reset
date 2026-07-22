@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def course_reset(target_course_id: str | None = None, source_course_id: str | None = None):
-    # TODO There's something causing a auth error here
-
     subdomain = os.getenv('SUBDOMAIN')
     api_key = os.getenv('API_KEY')
     target_course = target_course_id or os.getenv('TARGET_COURSE_ID')
@@ -52,4 +50,4 @@ def course_reset(target_course_id: str | None = None, source_course_id: str | No
     if not import_response.ok:
         raise RuntimeError(f"Import failed: {import_response.status_code} - {import_response.text}")
 
-    return new_course_id,
+    return new_course_id
