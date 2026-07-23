@@ -17,6 +17,11 @@ This is a small python tool I made to make it easier to reset a test course in C
 - Once you get the success notification, you can't user Ctrl/Cmd + Click on the text in the notification to open your test course at the content migrations screen to see it's progress.
   - If you open the course right after the success message, it may not have the course content populated yet. This is a limitation of Canvas' content migration tool, which is why the tool sends you to the content migration page in the course. That's where you'll be able to see the progress of your content migration.
 
+## Terms
+
+*Target Course* - This is the course you're going to be resetting
+*Source Course* - This is the course you're that content is going to be migrated from into your test course
+
 ## Features
 - The app does basic data validation and url stripping in the configuration step. This is pretty basic, but it's designed to try to catch potential errors with course IDs and access key. If you enter myschool.instructure.com, it will make an attempt to pull just the myschool out of it.
 - Due to how Canvas handles course resetting, the reset tool will overwrite your old test course ID with a new one when the course resets, matching the new ID of your test course.
