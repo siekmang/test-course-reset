@@ -88,10 +88,11 @@ class ConfigModal(ModalScreen):
             parsed_url = urlparse(subdomain_raw)
             netloc = parsed_url.netloc
         else:
-            netloc = subdomain_raw
+            # Strip any accidental paths if they pasted a domain with a slash without https://
+            netloc = subdomain_raw.split("/")[0]
 
-        if netloc.endswith(".instructure.com"):
-            subdomain_cleaned = netloc.split(".instructure.com")[0].split(".")[0]
+        if ".instructure." in netloc:
+            subdomain_cleaned = netloc.split(".instructure.")[0].split(".")[0]
         else:
             subdomain_cleaned = netloc
 
