@@ -1,6 +1,6 @@
 # Test Course Reset Utility
 
-This is a small python tool I made to make it easier to reset a test course in Canvas.
+This is a small python tool I made to make it easier to reset a test course in Canvas. This tool was designed with Canvas admins in mind, so people with the other roles may experience issues using this tool.
 
 ## Getting Started
 
