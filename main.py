@@ -115,8 +115,15 @@ class MainApp(App):
             subdomain = os.getenv("SUBDOMAIN")
             migration_url = f"https://{subdomain}.instructure.com/courses/{new_course_id}/content_migrations"
 
-            set_key(env_path, "TARGET_COURSE_ID", str(new_course_id))
-            os.environ["TARGET_COURSE_ID"] = str(new_course_id)
+            default_env_course = os.getenv("TARGET_COURSE_ID")
+            is_custom_course = (
+                target_course_id is not None
+                and target_course_id != default_env_course
+            )
+
+            if not is_custom_course:
+                set_key(env_path, "TARGET_COURSE_ID", str(new_course_id))
+                os.environ["TARGET_COURSE_ID"] = str(new_course_id)
 
             self.notify(
                 f'[link="{migration_url}"]Reset complete! Ctrl/Cmd + Click here to view migration status[/link]',
