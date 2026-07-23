@@ -20,6 +20,7 @@ This is a small python tool I made to make it easier to reset a test course in C
 ## Terms
 
 *Target Course* - This is the course you're going to be resetting
+
 *Source Course* - This is the course you're that content is going to be migrated from into your test course
 
 ## Features
