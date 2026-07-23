@@ -14,6 +14,7 @@ from src.services.course_reset import course_reset
 from src.screens.config_modal import ConfigModal
 from src.screens.custom_reset_modal import CustomResetModal
 
+CSS_PATH = Path(__file__).parent / "src" / "style" / "style.tcss"
 env_path = Path(".env")
 
 if not env_path.exists():
@@ -30,7 +31,7 @@ class MainApp(App):
             Binding("left", "focus_previous", "Previous", show=False, priority=True),
             Binding("right", "focus_next", "Next", show=False, priority=True),
         ]
-    CSS_PATH = "src/style/style.tcss"
+    CSS_PATH = CSS_PATH
     ENABLE_COMMAND_PALETTE = False
 
     def action_quit_app(self):
