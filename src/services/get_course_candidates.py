@@ -8,7 +8,7 @@ def get_course_candidates_by_name(course_name, subdomain, api_key):
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "User-Agent": "OpsTool/1.0.0 (Greg Siekman; opstool@siekmang.com)",
+        "User-Agent": "CourseResetTool/1.0.0 (Greg Siekman; gsiekman@unity.edu)",
     }
     params = {
         "search_by": "course",
