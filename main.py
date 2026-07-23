@@ -21,8 +21,6 @@ if not env_path.exists():
     env_path.touch()
     print("Created a new .env file for your configuration information.")
 
-load_dotenv(dotenv_path=env_path)
-
 class MainApp(App):
     TITLE = "Test Course Reset Utility"
     BINDINGS = [
@@ -33,6 +31,18 @@ class MainApp(App):
         ]
     CSS_PATH = CSS_PATH
     ENABLE_COMMAND_PALETTE = False
+
+    def on_mount(self) -> None:
+        """Load initial environment variables into app attributes on startup."""
+        load_dotenv(dotenv_path=env_path)
+        self.load_config_vars()
+
+    def load_config_vars(self) -> None:
+        """Helper to load or refresh environment variables onto self."""
+        self.subdomain = os.getenv("SUBDOMAIN", "")
+        self.api_key = os.getenv("API_KEY", "")
+        self.target_course = os.getenv("TARGET_COURSE_ID", "")
+        self.source_course = os.getenv("SOURCE_COURSE_ID", "")
 
     def action_quit_app(self):
         self.exit(0)
@@ -53,10 +63,32 @@ class MainApp(App):
     @on(Button.Pressed)
     def handle_buttons(self, event: Button.Pressed) -> None:
         if event.button.id == "config":
-            self.push_screen(ConfigModal())
+            def handle_config_dismiss(result):
+                # This runs automatically after ConfigModal closes
+                load_dotenv(dotenv_path=env_path, override=True)
+                self.load_config_vars()
+                self.notify("Configuration reloaded successfully.", title="Updated", severity="information", timeout=3)
+
+            self.push_screen(ConfigModal(), handle_config_dismiss)
         elif event.button.id == "reset_default":
+            if not all([self.subdomain, self.api_key, self.target_course, self.source_course]):
+                self.notify(
+                    "Configuration not properly set. Click the configuration button to fix that.",
+                    title="Error",
+                    severity="warning",
+                    timeout=5,
+                )
+                return
             self.run_worker(self._faked_reset(self.try_course_reset))
         elif event.button.id == "reset_other":
+            if not all([self.subdomain, self.api_key, self.target_course, self.source_course]):
+                self.notify(
+                    "Configuration not properly set. Click the configuration button to fix that.",
+                    title="Error",
+                    severity="warning",
+                    timeout=5,
+                )
+                return
             def handle_custom_modal_dismiss(result):
                 if not result:
                     return
