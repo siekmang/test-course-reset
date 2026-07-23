@@ -23,7 +23,7 @@ This is a small python tool I made to make it easier to reset a test course in C
 *Source Course* - This is the course you're that content is going to be migrated from into your test course
 
 ## Features
-- The app does basic data validation and url stripping in the configuration step. This is pretty basic, but it's designed to try to catch potential errors with course IDs and access key. If you enter myschool.instructure.com, it will make an attempt to pull just the myschool out of it.
+- The app does basic data validation and url stripping in the configuration step. This is pretty basic, but it's designed to try to catch potential errors with course IDs and access key. If you enter myschool.instructure.com for the subdomain, it will make an attempt to pull just the myschool out of it.
 - Due to how Canvas handles course resetting, the reset tool will overwrite your old test course ID with a new one when the course resets, matching the new ID of your test course.
 - Custom Course Reset is designed to give you a little more control over the process, you can either select to target your default test course or enter the name or id of the course you want to target, the same with the course you want to pull in content from.
   - If you use an ID, the tool will ask you to confirm that's correct.
